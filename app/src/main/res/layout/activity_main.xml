@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.menusystem.activity.MainActivity">
+
+
+    <RelativeLayout
+        android:id="@+id/left_top_twodiment"
+        android:layout_width="70dp"
+        android:layout_height="65dp"
+        android:background="@drawable/left_menu_top"
+        android:layout_alignParentTop="true"
+        >
+    </RelativeLayout>
+    <ListView
+        android:id="@+id/leftmenu"
+        android:layout_below="@+id/left_top_twodiment"
+        android:layout_width="70dp"
+        android:layout_height="match_parent"
+        android:background="@drawable/left_menu"
+        android:orientation="vertical"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+    </ListView>
+
+
+
+    <RelativeLayout
+        android:id="@+id/right"
+        android:layout_width="95dp"
+        android:layout_height="match_parent"
+        android:background="@drawable/right_menu"
+        android:orientation="vertical"
+        android:layout_margin="2dp"
+        android:layout_alignParentRight="true">
+        <TextView
+            android:id="@+id/selected_menu"
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:text="@string/right_menu"
+            android:gravity="center"
+            android:textSize="10dp"
+            android:textColor="@color/black"
+            />
+        <TextView
+            android:id="@+id/fenge"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_below="@id/selected_menu"
+            android:background="@color/black5"
+            />
+
+        <TextView
+            android:id="@+id/fenge1"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_margin="5dp"
+            android:layout_above="@+id/right_bottom_menu"
+            android:background="@color/black5"
+            />
+
+        <RelativeLayout
+            android:id="@+id/right_bottom_menu"
+            android:layout_width="match_parent"
+            android:layout_height="85dp"
+            android:layout_alignParentBottom="true"
+            >
+
+            <TextView
+                android:id="@+id/prices"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/prices"
+                android:textColor="@color/black"
+                android:textSize="7dp"
+                android:paddingLeft="15dp"
+                />
+
+            <TextView
+                android:id="@+id/prices1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/prices"
+                android:text="155"
+                android:paddingLeft="5dp"
+                android:textColor="@color/black"
+                android:textSize="7dp"
+
+                />
+            <Button
+                android:id="@+id/xiadan"
+                android:layout_width="match_parent"
+                android:layout_height="13dp"
+                android:layout_below="@id/prices"
+                android:layout_marginTop="6dp"
+                android:layout_marginLeft="13dp"
+                android:layout_marginRight="13dp"
+                android:text="@string/place_an_order"
+                android:textSize="8dp"
+                android:textColor="@color/black"
+                android:background="@color/white9"
+                />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="5dp"
+                android:layout_below="@id/xiadan">
+                <Button
+                    android:id="@+id/add"
+                    android:layout_width="30dp"
+                    android:layout_height="20dp"
+                    android:layout_marginLeft="8dp"
+                    android:text="@string/add"
+                    android:textSize="7dp"
+                    android:textColor="@color/black"
+                    android:background="@color/white9"
+                    />
+                <Button
+                    android:id="@+id/add_water"
+                    android:layout_width="30dp"
+                    android:layout_height="20dp"
+                    android:layout_marginRight="8dp"
+                    android:background="@color/white9"
+                    android:textSize="7dp"
+                    android:textColor="@color/black"
+                    android:text="@string/add_water"
+                    android:layout_alignParentRight="true"
+                    />
+
+                <Button
+                    android:id="@+id/cui"
+                    android:layout_width="30dp"
+                    android:layout_height="20dp"
+                    android:layout_below="@id/add"
+                    android:layout_marginTop="2dp"
+                    android:background="@color/white9"
+                    android:textSize="7dp"
+                    android:textColor="@color/black"
+                    android:text="@string/cui"
+                    android:layout_marginLeft="8dp"
+                    />
+
+                <Button
+                    android:id="@+id/mai"
+                    android:layout_width="30dp"
+                    android:layout_height="20dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_below="@id/add_water"
+                    android:layout_marginTop="2dp"
+                    android:background="@color/white9"
+                    android:textSize="7dp"
+                    android:textColor="@color/black"
+                    android:text="@string/mai"
+                    android:layout_alignParentRight="true"
+                    />
+
+
+
+            </RelativeLayout>
+
+
+
+        </RelativeLayout>
+        <ListView
+            android:id="@+id/right_listView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/fenge"
+            android:layout_above="@+id/fenge1"></ListView>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/MainRl"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/leftmenu"
+        android:layout_toLeftOf="@+id/right"
+        android:background="@color/transparent"
+        ></RelativeLayout>
+
+
+
+</RelativeLayout>

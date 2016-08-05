@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">MenuSyteam</string>
+    <string name="action_settings">Settings</string>
+    <string name="right_menu">已点菜式</string>
+    <string name="prices">总价:</string>
+    <string name="place_an_order">下单</string>
+    <string name="add">加饭</string>
+    <string name="add_water">加水</string>
+    <string name="cui">催单</string>
+    <string name="mai">结账</string>
+    <string name="dish">菜名</string>
+    <string name="price">价钱</string>
+
+
+</resources>
