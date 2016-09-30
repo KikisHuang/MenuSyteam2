@@ -63,6 +63,9 @@ public class LruCacheUtils {
                 Log.d("CacheUtils", "mMemoryCache.size()" + mMemoryCache.size());
             }
             mMemoryCache = null;
+        }else{
+
+            return;
         }
     }
     /**

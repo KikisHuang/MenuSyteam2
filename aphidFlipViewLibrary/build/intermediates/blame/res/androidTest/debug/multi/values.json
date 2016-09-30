@@ -1,42 +1,42 @@
 [
     {
-        "outputFile": "G:\\Studio Work\\MenuSyteam2\\aphidFlipViewLibrary\\build\\intermediates\\incremental\\mergeDebugAndroidTestResources\\merged.dir\\values\\values.xml",
+        "outputFile": "G:\\Studio Work\\MenuSyteam2\\aphidFlipViewLibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\values\\values.xml",
         "map": [
             {
                 "to": {
-                    "startLine": 10,
+                    "startLine": 3,
                     "startColumn": 4,
-                    "startOffset": 421,
+                    "startOffset": 395,
                     "endColumn": 49,
-                    "endOffset": 466
+                    "endOffset": 440
                 },
                 "from": {
                     "file": "G:\\Studio Work\\MenuSyteam2\\aphidFlipViewLibrary\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
-                        "startLine": 10,
+                        "startLine": 3,
                         "startColumn": 4,
-                        "startOffset": 421,
+                        "startOffset": 395,
                         "endColumn": 49,
-                        "endOffset": 466
+                        "endOffset": 440
                     }
                 }
             },
             {
                 "to": {
-                    "startLine": 11,
+                    "startLine": 4,
                     "startColumn": 4,
-                    "startOffset": 471,
+                    "startOffset": 445,
                     "endColumn": 57,
-                    "endOffset": 524
+                    "endOffset": 498
                 },
                 "from": {
                     "file": "G:\\Studio Work\\MenuSyteam2\\aphidFlipViewLibrary\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
-                        "startLine": 11,
+                        "startLine": 4,
                         "startColumn": 4,
-                        "startOffset": 471,
+                        "startOffset": 445,
                         "endColumn": 57,
-                        "endOffset": 524
+                        "endOffset": 498
                     }
                 }
             }

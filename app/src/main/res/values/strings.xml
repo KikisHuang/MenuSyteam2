@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MenuSyteam</string>
+    <string name="app_name">Co点菜系统</string>
     <string name="action_settings">Settings</string>
     <string name="right_menu">已点菜式</string>
     <string name="prices">总价:</string>
@@ -10,6 +10,7 @@
     <string name="mai">结账</string>
     <string name="dish">菜名</string>
     <string name="price">价钱</string>
+    <string name="hint">(注：如果对菜品有其他要求，请联系服务员。)</string>
 
 
 </resources>

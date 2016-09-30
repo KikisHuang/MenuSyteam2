@@ -49,7 +49,6 @@ public class FlipViewController extends AdapterView<Adapter> {
   public static final int HORIZONTAL = 1;
 
 
-
   public static interface ViewFlipListener {
 
     void onViewFlipped(View view, int position);

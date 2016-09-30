@@ -1,5 +1,6 @@
 package com.menusystem.application;
 
+import android.app.Activity;
 import android.app.Application;
 
 import com.nostra13.universalimageloader.cache.disc.impl.UnlimitedDiskCache;
@@ -11,18 +12,49 @@ import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
 import com.nostra13.universalimageloader.utils.StorageUtils;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by ${Kikis} on 2016-07-22.
-        */
+ */
 
-public class MyApplication extends Application{
+public class MyApplication extends Application {
+
+    private static final String TAG = "MyApplication";
+    public static List<Object> activitys = new ArrayList<Object>();
+    private static MyApplication instance;
+
+
+    public static MyApplication getInstance() {
+        if (instance == null)
+            instance = new MyApplication();
+        return instance;
+    }
+
+    // 添加Activity到容器中
+    public void addActivity(Activity activity) {
+        if (!activitys.contains(activity))
+            activitys.add(activity);
+    }
+
+    // 遍历所有Activity并finish
+    public void destroy() {
+
+        for (Object activity : activitys) {
+            ((Activity) activity).finish();
+        }
+        System.exit(0);
+    }
+
 
     @Override
     public void onCreate() {
         super.onCreate();
 
-
+        /**
+         * ImagerLoader配置
+         */
         //缓存文件的存放地址
         File cacheDir = StorageUtils.getOwnCacheDirectory(getApplicationContext(), "imageloader/Cache");
 
@@ -42,9 +74,9 @@ public class MyApplication extends Application{
                 .writeDebugLogs() //打印log信息
                 .build();
 
-
         //Initialize ImageLoader with configuration.
         ImageLoader.getInstance().init(configuration);
 
     }
+
 }

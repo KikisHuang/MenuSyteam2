@@ -41,7 +41,7 @@ public class fileUtils {
      *
      * @return
      */
-    private static String getStorageDirectory() {
+    public static String getStorageDirectory() {
         return Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED) ?
                 mSdRootPath + FOLDER_NAME : mDataRootPath + FOLDER_NAME;
     }

@@ -22,22 +22,30 @@
         android:layout_toLeftOf="@id/fenge"
         >
         <ImageView
+            android:id="@+id/fenge2"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_centerVertical="true" />
+
+        <ImageView
             android:id="@+id/photo"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_above="@+id/dish_name"
-            />
+             />
 
         <TextView
             android:id="@+id/dish_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/dish"
-            android:textSize="10dp"
+            android:textSize="17sp"
             android:textColor="@color/black"
-            android:layout_alignParentBottom="true"
+            android:layout_above="@+id/fenge2"
             android:gravity="center"
-            android:layout_margin="3dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="3dp"
             />
 
         <TextView
@@ -45,12 +53,49 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/price"
-            android:textSize="10dp"
-            android:layout_alignParentBottom="true"
+            android:textSize="17sp"
             android:layout_toRightOf="@+id/dish_name"
+            android:layout_above="@+id/fenge2"
             android:textColor="@color/black"
             android:gravity="center"
-            android:layout_marginLeft="35dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="3dp"
+            />
+
+
+        <ImageView
+            android:id="@+id/photo3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/dish_name3"
+            android:layout_below="@+id/fenge2" />
+
+        <TextView
+            android:id="@+id/dish_name3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dish"
+            android:textSize="17sp"
+            android:textColor="@color/black"
+            android:layout_alignParentBottom="true"
+            android:gravity="center"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="3dp"
+            />
+
+        <TextView
+            android:id="@+id/price3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/price"
+            android:textSize="17sp"
+            android:layout_toRightOf="@+id/dish_name"
+            android:textColor="@color/black"
+            android:layout_alignParentBottom="true"
+            android:gravity="center"
+            android:layout_marginLeft="10dp"
             android:layout_marginTop="3dp"
             android:layout_marginBottom="3dp"
             />
@@ -77,7 +122,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_above="@+id/dish_name1"
-           />
+            />
 
 
         <TextView
@@ -85,11 +130,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/dish"
-            android:textSize="10dp"
+            android:textSize="17sp"
+            android:layout_centerHorizontal="true"
             android:layout_above="@+id/fenge1"
             android:textColor="@color/black"
             android:gravity="center"
-            android:layout_margin="3dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="3dp"
             />
 
         <TextView
@@ -97,14 +144,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/price"
-            android:textSize="10dp"
+            android:textSize="17sp"
             android:layout_above="@+id/fenge1"
-            android:layout_toRightOf="@+id/dish_name2"
+            android:layout_toRightOf="@+id/dish_name1"
             android:textColor="@color/black"
             android:gravity="center"
             android:layout_marginTop="3dp"
             android:layout_marginBottom="3dp"
-            android:layout_marginLeft="35dp"
+            android:layout_marginLeft="10dp"
             />
 
 
@@ -112,7 +159,7 @@
             android:id="@+id/number"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="8dp"
+            android:textSize="16sp"
             android:gravity="center|right"
             android:padding="3dp"
             android:textColor="@android:color/black"
@@ -125,11 +172,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/dish"
-            android:textSize="10dp"
+            android:textSize="17sp"
+            android:layout_centerHorizontal="true"
             android:layout_alignParentBottom="true"
             android:textColor="@color/black"
             android:gravity="center"
-            android:layout_margin="3dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="3dp"
             />
 
         <TextView
@@ -141,8 +190,8 @@
             android:gravity="center"
             android:layout_marginTop="3dp"
             android:layout_marginBottom="3dp"
-            android:textSize="10dp"
-            android:layout_marginLeft="35dp"
+            android:textSize="17sp"
+            android:layout_marginLeft="10dp"
             android:layout_alignParentBottom="true"
             android:layout_toRightOf="@+id/dish_name2"
 
@@ -154,7 +203,6 @@
             android:layout_above="@+id/dish_name2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="3dp"
             />
 
     </RelativeLayout>

@@ -1,180 +1,246 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.menusystem.activity.MainActivity">
+    tools:context="com.menusystem.activity.MainActivity"
+    >
 
 
     <RelativeLayout
         android:id="@+id/left_top_twodiment"
-        android:layout_width="70dp"
-        android:layout_height="65dp"
-        android:background="@drawable/left_menu_top"
+        android:layout_width="100dp"
+        android:layout_height="80dp"
         android:layout_alignParentTop="true"
-        >
+        android:layout_marginLeft="3dp"
+        android:background="@drawable/left_menu_top">
+
+        <TextView
+            android:id="@+id/zhuohao"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_margin="5dp"
+            android:gravity="center"
+            android:text="桌号 : "
+            android:textColor="@color/black"
+            android:textSize="17dp" />
+
+        <TextView
+            android:id="@+id/table_number"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_toRightOf="@+id/zhuohao"
+            android:gravity="center"
+            android:text="0000"
+            android:textColor="@color/black"
+            android:textSize="16dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="3dp"
+            android:background="@color/black" />
     </RelativeLayout>
+
     <ListView
         android:id="@+id/leftmenu"
-        android:layout_below="@+id/left_top_twodiment"
-        android:layout_width="70dp"
+        android:layout_width="100dp"
         android:layout_height="match_parent"
-        android:background="@drawable/left_menu"
-        android:orientation="vertical"
-        android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
+        android:layout_marginLeft="3dp"
+        android:layout_below="@+id/left_top_twodiment"
+        android:background="@drawable/left_menu"
+        android:orientation="vertical">
 
     </ListView>
 
 
-
     <RelativeLayout
         android:id="@+id/right"
-        android:layout_width="95dp"
+        android:layout_width="190dp"
         android:layout_height="match_parent"
-        android:background="@drawable/right_menu"
-        android:orientation="vertical"
+        android:layout_alignParentRight="true"
         android:layout_margin="2dp"
-        android:layout_alignParentRight="true">
+        android:background="@drawable/right_menu"
+        android:orientation="vertical">
+
         <TextView
             android:id="@+id/selected_menu"
             android:layout_width="match_parent"
             android:layout_height="25dp"
-            android:text="@string/right_menu"
             android:gravity="center"
-            android:textSize="10dp"
+            android:text="@string/right_menu"
             android:textColor="@color/black"
-            />
+            android:textSize="14dp" />
+
+        <TextView
+            android:id="@+id/fenge123"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@id/selected_menu"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="1dp"
+            android:background="@color/black" />
+
+        <LinearLayout
+            android:id="@+id/table_layout"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_below="@+id/fenge123">
+
+            <TextView
+                android:layout_width="95dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="菜名"
+                android:textColor="@color/black"
+                android:textSize="15dp" />
+
+            <TextView
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/black" />
+
+            <TextView
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="单价"
+                android:textColor="@color/black"
+                android:textSize="15dp" />
+
+            <TextView
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/black" />
+
+            <TextView
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="数量"
+                android:textColor="@color/black"
+                android:textSize="15dp" />
+        </LinearLayout>
+
         <TextView
             android:id="@+id/fenge"
             android:layout_width="match_parent"
             android:layout_height="1dp"
+            android:layout_below="@id/table_layout"
             android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:layout_below="@id/selected_menu"
-            android:background="@color/black5"
-            />
-
-        <TextView
-            android:id="@+id/fenge1"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_margin="5dp"
-            android:layout_above="@+id/right_bottom_menu"
-            android:background="@color/black5"
-            />
+            android:layout_marginRight="1dp"
+            android:background="@color/black" />
 
         <RelativeLayout
             android:id="@+id/right_bottom_menu"
             android:layout_width="match_parent"
-            android:layout_height="85dp"
-            android:layout_alignParentBottom="true"
-            >
+            android:layout_height="155dp"
+            android:layout_alignParentBottom="true">
 
             <TextView
                 android:id="@+id/prices"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:paddingLeft="15dp"
                 android:text="@string/prices"
                 android:textColor="@color/black"
-                android:textSize="7dp"
-                android:paddingLeft="15dp"
-                />
+                android:textSize="13dp" />
 
             <TextView
-                android:id="@+id/prices1"
+                android:id="@+id/all_prices"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@id/prices"
-                android:text="155"
                 android:paddingLeft="5dp"
+                android:text="0"
                 android:textColor="@color/black"
-                android:textSize="7dp"
+                android:textSize="13dp"
 
                 />
+
             <Button
                 android:id="@+id/xiadan"
                 android:layout_width="match_parent"
-                android:layout_height="13dp"
+                android:layout_height="35dp"
                 android:layout_below="@id/prices"
-                android:layout_marginTop="6dp"
                 android:layout_marginLeft="13dp"
                 android:layout_marginRight="13dp"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/button_selector"
                 android:text="@string/place_an_order"
-                android:textSize="8dp"
                 android:textColor="@color/black"
-                android:background="@color/white9"
-                />
+                android:textSize="13dp" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="5dp"
-                android:layout_below="@id/xiadan">
-                <Button
-                    android:id="@+id/add"
-                    android:layout_width="30dp"
-                    android:layout_height="20dp"
-                    android:layout_marginLeft="8dp"
-                    android:text="@string/add"
-                    android:textSize="7dp"
-                    android:textColor="@color/black"
-                    android:background="@color/white9"
-                    />
+                android:layout_below="@id/xiadan"
+                android:layout_marginTop="10dp">
+
                 <Button
                     android:id="@+id/add_water"
-                    android:layout_width="30dp"
-                    android:layout_height="20dp"
-                    android:layout_marginRight="8dp"
-                    android:background="@color/white9"
-                    android:textSize="7dp"
-                    android:textColor="@color/black"
-                    android:text="@string/add_water"
+                    android:layout_width="65dp"
+                    android:layout_height="33dp"
                     android:layout_alignParentRight="true"
-                    />
+                    android:layout_below="@+id/mai"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/button_selector"
+                    android:text="@string/add_water"
+                    android:textColor="@color/black"
+                    android:textSize="11dp" />
 
                 <Button
                     android:id="@+id/cui"
-                    android:layout_width="30dp"
-                    android:layout_height="20dp"
-                    android:layout_below="@id/add"
-                    android:layout_marginTop="2dp"
-                    android:background="@color/white9"
-                    android:textSize="7dp"
-                    android:textColor="@color/black"
-                    android:text="@string/cui"
+                    android:layout_width="65dp"
+                    android:layout_height="33dp"
+                    android:layout_below="@+id/mai"
+                    android:layout_alignParentLeft="true"
                     android:layout_marginLeft="8dp"
-                    />
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/button_selector"
+                    android:text="@string/cui"
+                    android:textColor="@color/black"
+                    android:textSize="11dp" />
 
                 <Button
                     android:id="@+id/mai"
-                    android:layout_width="30dp"
-                    android:layout_height="20dp"
-                    android:layout_marginRight="8dp"
-                    android:layout_below="@id/add_water"
-                    android:layout_marginTop="2dp"
-                    android:background="@color/white9"
-                    android:textSize="7dp"
-                    android:textColor="@color/black"
-                    android:text="@string/mai"
+                    android:layout_width="match_parent"
+                    android:layout_height="33dp"
                     android:layout_alignParentRight="true"
-                    />
-
+                    android:layout_marginRight="13dp"
+                    android:layout_marginLeft="13dp"
+                    android:background="@drawable/button_selector"
+                    android:text="@string/mai"
+                    android:textColor="@color/black"
+                    android:textSize="11dp" />
 
 
             </RelativeLayout>
 
 
-
         </RelativeLayout>
-        <ListView
+
+        <com.menusystem.sliderview.SliderListView
             android:id="@+id/right_listView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/fenge"
-            android:layout_above="@+id/fenge1"></ListView>
+            android:layout_above="@+id/fenge1"
+            android:layout_below="@id/fenge">
+
+        </com.menusystem.sliderview.SliderListView>
+
+        <TextView
+            android:id="@+id/fenge1"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_above="@+id/right_bottom_menu"
+            android:layout_marginRight="5dp"
+            android:background="@color/black"
+
+            />
 
     </RelativeLayout>
 
@@ -183,11 +249,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_centerVertical="true"
-        android:layout_toRightOf="@+id/leftmenu"
         android:layout_toLeftOf="@+id/right"
-        android:background="@color/transparent"
-        ></RelativeLayout>
-
+        android:layout_toRightOf="@+id/leftmenu"
+        android:background="@color/transparent"></RelativeLayout>
 
 
 </RelativeLayout>

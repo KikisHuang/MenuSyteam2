@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/order_layout"
+    android:layout_width="match_parent"
+    android:layout_height="550dp"
+    android:background="@drawable/order_background"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:id="@+id/order_food_name"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_marginTop="47dp"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:textSize="18dp" />
+
+    <ImageView
+        android:id="@+id/Out_Of_Print"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/out_of_print"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        android:visibility="gone"
+        />
+
+    <RelativeLayout
+        android:id="@+id/price_layout"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_below="@+id/order_food_name"
+        android:layout_marginTop="55dp">
+
+        <TextView
+            android:id="@+id/jiage"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_toLeftOf="@+id/zhong"
+            android:gravity="center"
+            android:text="单价 :"
+            android:textColor="@color/black"
+            android:textSize="18dp" />
+
+        <TextView
+            android:id="@+id/zhong"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:id="@+id/order_food_price"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="3dp"
+            android:layout_toRightOf="@+id/jiage"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textSize="20dp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/add_layout"
+        android:layout_width="115dp"
+        android:layout_height="25dp"
+        android:layout_below="@+id/price_layout"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="55dp"
+        android:background="@color/white9"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/minus"
+            android:layout_width="24dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:background="@drawable/minus" />
+
+        <TextView
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_margin="2dp"
+            android:layout_toRightOf="@+id/minus"
+            android:background="@color/black2" />
+
+        <TextView
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_margin="2dp"
+            android:layout_toLeftOf="@+id/add"
+            android:background="@color/black2" />
+
+        <TextView
+            android:id="@+id/add"
+            android:layout_width="24dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/add" />
+
+        <EditText
+            android:id="@+id/edt"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:background="@android:color/transparent"
+            android:editable="false"
+            android:gravity="center"
+            android:text="0"
+            android:textColor="@color/black"
+            android:textSize="14dp">
+
+        </EditText>
+
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/shouwan"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:text="非常对不起！该菜已售完了。"
+        android:layout_below="@+id/Out_Of_Print"
+        android:textColor="@color/red"
+        android:textSize="18dp"
+        android:layout_marginTop="15dp"
+        android:visibility="gone"
+        />
+
+
+    <Button
+        android:id="@+id/close"
+        android:layout_width="120dp"
+        android:layout_height="70dp"
+        android:background="@color/white9"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:text="关闭"
+        android:visibility="gone"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="35dp"
+        android:textColor="@color/black"
+        android:textSize="18dp" />
+
+    <RelativeLayout
+        android:id="@+id/button_layout"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_below="@+id/add_layout"
+        android:layout_marginTop="85dp">
+
+        <TextView
+            android:id="@+id/zhongxian"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+
+            />
+
+        <Button
+            android:id="@+id/submit"
+            android:layout_width="120dp"
+            android:layout_height="match_parent"
+            android:layout_marginRight="30dp"
+            android:layout_toLeftOf="@+id/zhongxian"
+            android:background="@color/white9"
+            android:text="添加"
+            android:textColor="@color/black"
+            android:textSize="18dp" />
+
+
+        <Button
+            android:id="@+id/cancel"
+            android:layout_width="120dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="30dp"
+            android:layout_toRightOf="@+id/zhongxian"
+            android:background="@color/white9"
+            android:text="取消"
+            android:textColor="@color/black"
+            android:textSize="18dp" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/button_layout"
+        android:layout_margin="15dp"
+        android:textSize="15dp"
+        android:gravity="center"
+        android:textColor="@color/red"
+        android:text="@string/hint"
+        />
+
+</RelativeLayout>

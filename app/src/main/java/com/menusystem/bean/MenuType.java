@@ -9,7 +9,6 @@ public class MenuType implements Serializable{
     String SystemID;
     String FoodTypeID;
     String FoodTypeName;
-    String FoodTypeArea;
 
     public String getSystemID() {
         return SystemID;
@@ -35,22 +34,6 @@ public class MenuType implements Serializable{
         FoodTypeName = foodTypeName;
     }
 
-    public String getFoodTypeArea() {
-        return FoodTypeArea;
-    }
-
-    public void setFoodTypeArea(String foodTypeArea) {
-        FoodTypeArea = foodTypeArea;
-    }
 
 
-    @Override
-    public String toString() {
-        return "MenuType{" +
-                "SystemID='" + SystemID + '\'' +
-                ", FoodTypeID='" + FoodTypeID + '\'' +
-                ", FoodTypeName='" + FoodTypeName + '\'' +
-                ", FoodTypeArea='" + FoodTypeArea + '\'' +
-                '}';
-    }
 }
