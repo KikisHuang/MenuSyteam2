@@ -38,7 +38,7 @@ public class ImageLoader {
 
         //显示图片的配置
         DisplayImageOptions options = new DisplayImageOptions.Builder()
-                .showImageOnLoading(R.drawable.ic_stub)
+                .showImageOnLoading(R.color.white)
                 .showImageOnFail(R.drawable.ic_error)
                 .cacheInMemory(true)
                 .cacheOnDisk(true)

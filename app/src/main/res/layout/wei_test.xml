@@ -151,13 +151,13 @@
             android:layout_marginRight="1dp"
             android:background="@color/black" />
 
-        <com.menusystem.sliderview.SliderListView
+        <com.menusystem.view.SliderListView
             android:id="@+id/right_listView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="50">
 
-        </com.menusystem.sliderview.SliderListView>
+        </com.menusystem.view.SliderListView>
 
 
         <TextView

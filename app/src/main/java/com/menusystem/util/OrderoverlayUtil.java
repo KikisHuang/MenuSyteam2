@@ -10,6 +10,7 @@ import static com.menusystem.bean.Verify.NO_PLACE_AN_ORDER;
 
 /**
  * Created by ${Kikis} on 2016-09-06.
+ * 叠加菜式方法;（暂停使用）
  */
 
 public class OrderoverlayUtil {

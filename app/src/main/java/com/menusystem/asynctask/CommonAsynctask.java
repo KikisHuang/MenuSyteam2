@@ -132,10 +132,12 @@ public class CommonAsynctask extends AsyncTask {
                     od.setSellPrice(object.getString("SellPrice"));
                     od.setAppend(object.getInt("Append"));
                     od.setState(object.getInt("FoodStatus"));
+                    od.setDetailName(object.getString("DetailName"));
 
                     AddOrder(od,context);
                     Log.i(TAG, "获取到上次桌号未完成订单....result ====="+result);
                 }
+                asyncResponse.onReceivedSuccess();
                 GainAllPrices();
                 pd.cancel();
                 return;

@@ -18,20 +18,16 @@
         android:id="@+id/left_rl"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="7dp"
+        android:layout_margin="12dp"
         android:layout_toLeftOf="@id/fenge"
         >
-        <ImageView
-            android:id="@+id/fenge2"
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:layout_centerVertical="true" />
 
         <ImageView
             android:id="@+id/photo"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_above="@+id/dish_name"
+            android:layout_above="@+id/price"
+            android:scaleType="centerCrop"
              />
 
         <TextView
@@ -41,8 +37,8 @@
             android:text="@string/dish"
             android:textSize="17sp"
             android:textColor="@color/black"
-            android:layout_above="@+id/fenge2"
             android:gravity="center"
+            android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="3dp"
             android:layout_marginBottom="3dp"
@@ -55,45 +51,8 @@
             android:text="@string/price"
             android:textSize="17sp"
             android:layout_toRightOf="@+id/dish_name"
-            android:layout_above="@+id/fenge2"
-            android:textColor="@color/black"
-            android:gravity="center"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="3dp"
-            android:layout_marginBottom="3dp"
-            />
-
-
-        <ImageView
-            android:id="@+id/photo3"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_above="@+id/dish_name3"
-            android:layout_below="@+id/fenge2" />
-
-        <TextView
-            android:id="@+id/dish_name3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/dish"
-            android:textSize="17sp"
-            android:textColor="@color/black"
             android:layout_alignParentBottom="true"
-            android:gravity="center"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="3dp"
-            android:layout_marginBottom="3dp"
-            />
-
-        <TextView
-            android:id="@+id/price3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/price"
-            android:textSize="17sp"
-            android:layout_toRightOf="@+id/dish_name"
             android:textColor="@color/black"
-            android:layout_alignParentBottom="true"
             android:gravity="center"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="3dp"
@@ -109,7 +68,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_toRightOf="@+id/fenge"
-        android:layout_margin="7dp"
+        android:layout_margin="12dp"
         >
         <ImageView
             android:id="@+id/fenge1"

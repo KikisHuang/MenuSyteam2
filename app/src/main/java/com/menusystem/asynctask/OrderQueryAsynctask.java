@@ -94,6 +94,7 @@ public class OrderQueryAsynctask extends AsyncTask{
                 od.setSellPrice(object.getString("SellPrice"));
                 od.setAppend(object.getInt("Append"));
                 od.setState(object.getInt("FoodStatus"));
+                od.setDetailName(object.getString("DetailName"));
                 AddOrder(od,context);
 
             }

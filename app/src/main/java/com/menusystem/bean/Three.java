@@ -7,7 +7,7 @@ import java.io.Serializable;
  *
  */
 
-public class Four implements Serializable{
+public class Three implements Serializable{
 
 
     String FoodID1;
@@ -27,53 +27,6 @@ public class Four implements Serializable{
     String FoodName3;
     String SellPrice3;
     String FoodPicAddress3;
-
-    String FoodID4;
-    String FoodTypeID4;
-    String FoodName4;
-    String SellPrice4;
-    String FoodPicAddress4;
-
-
-    public String getFoodID4() {
-        return FoodID4;
-    }
-
-    public void setFoodID4(String foodID4) {
-        FoodID4 = foodID4;
-    }
-
-    public String getFoodTypeID4() {
-        return FoodTypeID4;
-    }
-
-    public void setFoodTypeID4(String foodTypeID4) {
-        FoodTypeID4 = foodTypeID4;
-    }
-
-    public String getFoodName4() {
-        return FoodName4;
-    }
-
-    public void setFoodName4(String foodName4) {
-        FoodName4 = foodName4;
-    }
-
-    public String getSellPrice4() {
-        return SellPrice4;
-    }
-
-    public void setSellPrice4(String sellPrice4) {
-        SellPrice4 = sellPrice4;
-    }
-
-    public String getFoodPicAddress4() {
-        return FoodPicAddress4;
-    }
-
-    public void setFoodPicAddress4(String foodPicAddress4) {
-        FoodPicAddress4 = foodPicAddress4;
-    }
 
 
     public String getFoodID1() {

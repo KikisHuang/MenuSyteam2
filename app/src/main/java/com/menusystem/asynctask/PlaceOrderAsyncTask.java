@@ -46,7 +46,7 @@ public class PlaceOrderAsyncTask extends AsyncTask {
         plist = (List<PlaceOrder>) params[0];
 
 
-        String uri =MHTTP + FOOD_PLACEORDER_HTTP;
+        String uri = MHTTP + FOOD_PLACEORDER_HTTP;
 
         result = HttpURlConnection.getHttpClient(plist, uri);
 

@@ -11,59 +11,41 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.menusystem.R;
-import com.menusystem.bean.Data;
-import com.menusystem.bean.Four;
+import com.menusystem.bean.Three;
 import com.menusystem.util.LruCacheUtils;
 import com.menusystem.util.OrderIntentUtils;
 import com.menusystem.util.fileUtils;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.net.URLEncoder;
-import java.util.ArrayList;
 import java.util.List;
 
-import static android.R.attr.id;
+import static android.provider.ContactsContract.CommonDataKinds.Website.URL;
+import static com.menusystem.R.id.price1;
 import static com.menusystem.bean.Verify.MY_LOGCAT_TAG;
-import static com.menusystem.util.DownloadService.DEFAULT_TASK_EXECUTOR;
-import static com.menusystem.util.DownloadService.IO_BUFFER_SIZE;
-import static com.menusystem.util.DownloadService.createFilePath;
-import static com.menusystem.util.DownloadService.lock;
-import static com.menusystem.util.DownloadService.size;
 import static com.menusystem.util.OrderIntentUtils.getIntentOrder;
 
 
 public class TravelAdapter extends BaseAdapter {
 
-    private String URL1, URL2, URL3, URL4;
+    private String URL1, URL2, URL3;
     public static final String TAG = "TravelAdapter";
     private static final String CACHE_FILENAME_PREFIX = "cache_";
     private LayoutInflater inflater;
     private int repeatCount = 1;
     private static Activity mcontext;
     private String path = "";
-    public static List<Four> list;
-    private List<Data> datas;
+    public static List<Three> list;
     public List<String> mlist;
     public static Bitmap bt1;
     public static Bitmap bt2;
     public static Bitmap bt3;
-    public static Bitmap bt4;
 
-    public TravelAdapter(Activity context, List<Four> dlist, List<Data> datas) {
+    public TravelAdapter(Activity context, List<Three> dlist) {
         this.mcontext = context;
         this.list = dlist;
-        this.datas = datas;
         this.inflater = LayoutInflater.from(context);
     }
 
@@ -136,48 +118,40 @@ public class TravelAdapter extends BaseAdapter {
             }
         });
 
+        if(!URL2.equals("")){
 
-        holder.photo1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+            holder.photo1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
 
-                String fdname = list.get(position).getFoodName2();
-                String fdid = list.get(position).getFoodID2();
-                String Sp = list.get(position).getSellPrice2();
+                    String fdname = list.get(position).getFoodName2();
+                    String fdid = list.get(position).getFoodID2();
+                    String Sp = list.get(position).getSellPrice2();
 
-                new OrderIntentUtils(mcontext, fdname, fdid, Sp);
-                getIntentOrder();
+                    new OrderIntentUtils(mcontext, fdname, fdid, Sp);
+                    getIntentOrder();
 
-            }
-        });
+                }
+            });
+        }
 
-        holder.photo2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-                String fdname = list.get(position).getFoodName3();
-                String fdid = list.get(position).getFoodID3();
-                String Sp = list.get(position).getSellPrice3();
+        if(!URL.equals("")){
+            holder.photo2.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
 
-                new OrderIntentUtils(mcontext, fdname, fdid, Sp);
-                getIntentOrder();
+                    String fdname = list.get(position).getFoodName3();
+                    String fdid = list.get(position).getFoodID3();
+                    String Sp = list.get(position).getSellPrice3();
 
-            }
-        });
+                    new OrderIntentUtils(mcontext, fdname, fdid, Sp);
+                    getIntentOrder();
 
-        holder.photo3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+                }
+            });
+        }
 
-                String fdname = list.get(position).getFoodName4();
-                String fdid = list.get(position).getFoodID4();
-                String Sp = list.get(position).getSellPrice4();
-
-                new OrderIntentUtils(mcontext, fdname, fdid, Sp);
-                getIntentOrder();
-
-            }
-        });
     }
 
     private void getPath() {
@@ -206,15 +180,12 @@ public class TravelAdapter extends BaseAdapter {
 
         holder.number.setText(position + 1 + "/" + da);
 
-
         holder.price.setText(list.get(position).getSellPrice1());
         holder.price1.setText(list.get(position).getSellPrice2());
         holder.price2.setText(list.get(position).getSellPrice3());
-        holder.price3.setText(list.get(position).getSellPrice4());
         holder.dish_name.setText(list.get(position).getFoodName1());
         holder.dish_name1.setText(list.get(position).getFoodName2());
         holder.dish_name2.setText(list.get(position).getFoodName3());
-        holder.dish_name3.setText(list.get(position).getFoodName4());
 
         try {
 
@@ -222,9 +193,22 @@ public class TravelAdapter extends BaseAdapter {
              * 将路径进行替代显示
              */
             URL1 = CACHE_FILENAME_PREFIX + URLEncoder.encode(list.get(position).getFoodPicAddress1().replace("*", ""), "UTF-8");
-            URL2 = CACHE_FILENAME_PREFIX + URLEncoder.encode(list.get(position).getFoodPicAddress2().replace("*", ""), "UTF-8");
-            URL3 = CACHE_FILENAME_PREFIX + URLEncoder.encode(list.get(position).getFoodPicAddress3().replace("*", ""), "UTF-8");
-            URL4 = CACHE_FILENAME_PREFIX + URLEncoder.encode(list.get(position).getFoodPicAddress4().replace("*", ""), "UTF-8");
+
+            if(list.get(position).getFoodPicAddress2().equals("")){
+
+                URL2 = "";
+            }else{
+                URL2 = CACHE_FILENAME_PREFIX + URLEncoder.encode(list.get(position).getFoodPicAddress2().replace("*", ""), "UTF-8");
+
+            }
+            if(list.get(position).getFoodPicAddress3().equals("")){
+
+                URL3 = "";
+
+            }else{
+                URL3 = CACHE_FILENAME_PREFIX + URLEncoder.encode(list.get(position).getFoodPicAddress3().replace("*", ""), "UTF-8");
+
+            }
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -240,12 +224,20 @@ public class TravelAdapter extends BaseAdapter {
          * 从本地或sdk中获取数据
          */
         bt1 = fu.getBitmap(URL1);
-        bt2 = fu.getBitmap(URL2);
-        bt3 = fu.getBitmap(URL3);
-        bt4 = fu.getBitmap(URL4);
+
+        if(URL2.equals("")){
+            bt2 = null;
+        }else{
+            bt2 = fu.getBitmap(URL2);
+        }
+        if(URL3.equals("")){
+            bt3 = null;
+        }else{
+            bt3 = fu.getBitmap(URL3);
+        }
 
         /**
-         * ImageLoader options配置
+         *ImageLoader options配置
          */
         DisplayImageOptions options = com.menusystem.util.ImageLoader.getImageConfig();
 
@@ -260,6 +252,7 @@ public class TravelAdapter extends BaseAdapter {
                 holder.photo.setImageBitmap(Lcu.getBitmapFromMemCache(URL1));
 
             } else {
+
                 holder.photo.setImageBitmap(Lcu.getBitmapFromMemCache(URL1));
 
             }
@@ -313,148 +306,9 @@ public class TravelAdapter extends BaseAdapter {
 
         }
 
-
-        if (bt4 != null) {
-
-            Bitmap bitmap = Lcu.getBitmapFromMemCache(URL4);
-
-            if (bitmap == null) {
-
-                Lcu.addBitmapToMemoryCache(URL4, bt4);
-
-                holder.photo3.setImageBitmap(Lcu.getBitmapFromMemCache(URL4));
-
-            } else {
-
-                holder.photo3.setImageBitmap(Lcu.getBitmapFromMemCache(URL4));
-            }
-
-
-        } else {
-
-            ImageLoader.getInstance().displayImage(list.get(position).getFoodPicAddress4(), holder.photo3, options);
-
-        }
-
-
         RemoveCache();
     }
 
-
-    /**
-     * 调用下载类DownloadService下载单个图片资源
-     */
-
-    private void StartDownload(int position, Bitmap bt1, Bitmap bt2, Bitmap bt3) {
-
-        Log.i(TAG, MY_LOGCAT_TAG + "进入单张图片资源下载方法，id===" + id);
-        mlist = new ArrayList<>();
-
-
-        if (bt1 == null) {
-            mlist.add(list.get(position).getFoodPicAddress1());
-
-            Log.i(TAG, "getFoodPicAddress1-----为null" + list.get(position).getFoodPicAddress1());
-        }
-
-        if (bt2 == null) {
-            mlist.add(list.get(position).getFoodPicAddress2());
-
-            Log.i(TAG, "getFoodPicAddress2-----为null" + list.get(position).getFoodPicAddress2());
-        }
-
-        if (bt3 == null) {
-            mlist.add(list.get(position).getFoodPicAddress3());
-
-            Log.i(TAG, "getFoodPicAddress3-----为null" + list.get(position).getFoodPicAddress3());
-        }
-
-        if (mlist.size() > 0) {
-
-            for (int i = 0; i < mlist.size(); i++) {
-
-                final int finalI = i;
-
-                new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-
-                        MyBasedownload(mlist.get(finalI));
-
-                    }
-                }).start();
-
-
-            }
-        }
-
-    }
-
-    private File MyBasedownload(String murl) {
-
-        fileUtils fu = new fileUtils(mcontext);
-        path = fu.getStorageDirectory() + File.separator;
-
-
-        String fileName = murl;
-        // 图片命名方式
-        final File cacheFile = new File(createFilePath(new File(
-                path), fileName));
-
-        HttpURLConnection urlConnection = null;
-        BufferedOutputStream out = null;
-
-        try {
-            final URL url = new URL(murl);
-            urlConnection = (HttpURLConnection) url.openConnection();
-            final InputStream in = new BufferedInputStream(
-                    urlConnection.getInputStream(), IO_BUFFER_SIZE);
-            out = new BufferedOutputStream(new FileOutputStream(cacheFile),
-                    IO_BUFFER_SIZE);
-
-            int b;
-            while ((b = in.read()) != -1) {
-                out.write(b);
-            }
-            statDownloadNum();
-            return cacheFile;
-
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            // 有一个下载失败，则表示批量下载没有成功
-            Log.e(TAG, "下载失败了....... " + murl + " error信息=====" + e);
-        } finally {
-            if (urlConnection != null) {
-                urlConnection.disconnect();
-            }
-            if (out != null) {
-                try {
-                    out.close();
-                } catch (final IOException e) {
-                    Log.e(TAG, "Error in downloadBitmap - " + e);
-                }
-            }
-        }
-        return cacheFile;
-    }
-
-    private void statDownloadNum() {
-
-        synchronized (lock) {
-            size++;
-            if (size == mlist.size()) {
-                Log.d(TAG, "download finished total  -- 下载成功统计 " + size);
-                // 释放资源
-                DEFAULT_TASK_EXECUTOR.shutdownNow();
-                // 如果下载成功的个数与列表中 url个数一致，说明下载成功
-
-                Log.i(TAG, "下载成功了:" + size + "个本地没有的图片");
-            }
-        }
-    }
 
     /**
      * 缓存清理方法
@@ -491,16 +345,12 @@ public class TravelAdapter extends BaseAdapter {
         holder.dish_name = (TextView) convertView.findViewById(R.id.dish_name);
 
         holder.photo1 = (ImageView) convertView.findViewById(R.id.photo1);
-        holder.price1 = (TextView) convertView.findViewById(R.id.price1);
+        holder.price1 = (TextView) convertView.findViewById(price1);
         holder.dish_name1 = (TextView) convertView.findViewById(R.id.dish_name1);
 
         holder.photo2 = (ImageView) convertView.findViewById(R.id.photo2);
         holder.price2 = (TextView) convertView.findViewById(R.id.price2);
         holder.dish_name2 = (TextView) convertView.findViewById(R.id.dish_name2);
-
-        holder.photo3 = (ImageView) convertView.findViewById(R.id.photo3);
-        holder.dish_name3 = (TextView) convertView.findViewById(R.id.dish_name3);
-        holder.price3 = (TextView) convertView.findViewById(R.id.price3);
 
     }
 
@@ -520,9 +370,6 @@ public class TravelAdapter extends BaseAdapter {
         TextView price2;
         ImageView photo2;
 
-        TextView dish_name3;
-        TextView price3;
-        ImageView photo3;
     }
 
     //BitmapRecycle;
@@ -540,10 +387,6 @@ public class TravelAdapter extends BaseAdapter {
         if (bt3 != null && !bt3.isRecycled()) {
             bt3.recycle();
             bt3 = null;
-        }
-        if (bt4 != null && !bt4.isRecycled()) {
-            bt4.recycle();
-            bt4 = null;
         }
 
         System.gc();

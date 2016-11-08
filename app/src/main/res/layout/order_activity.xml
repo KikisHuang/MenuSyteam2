@@ -11,10 +11,10 @@
         android:id="@+id/order_food_name"
         android:layout_width="match_parent"
         android:layout_height="55dp"
-        android:layout_marginTop="47dp"
+        android:layout_marginTop="40dp"
         android:gravity="center"
         android:textColor="@color/black"
-        android:textSize="18dp" />
+        android:textSize="23dp" />
 
     <ImageView
         android:id="@+id/Out_Of_Print"
@@ -31,7 +31,7 @@
         android:layout_width="match_parent"
         android:layout_height="55dp"
         android:layout_below="@+id/order_food_name"
-        android:layout_marginTop="55dp">
+        android:layout_marginTop="35dp">
 
         <TextView
             android:id="@+id/jiage"
@@ -41,7 +41,7 @@
             android:gravity="center"
             android:text="单价 :"
             android:textColor="@color/black"
-            android:textSize="18dp" />
+            android:textSize="23dp" />
 
         <TextView
             android:id="@+id/zhong"
@@ -57,22 +57,22 @@
             android:layout_toRightOf="@+id/jiage"
             android:gravity="center"
             android:textColor="@color/black"
-            android:textSize="20dp" />
+            android:textSize="23dp" />
     </RelativeLayout>
 
     <RelativeLayout
         android:id="@+id/add_layout"
-        android:layout_width="115dp"
-        android:layout_height="25dp"
+        android:layout_width="100dp"
+        android:layout_height="23dp"
         android:layout_below="@+id/price_layout"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="55dp"
+        android:layout_marginTop="30dp"
         android:background="@color/white9"
         android:gravity="center">
 
         <TextView
             android:id="@+id/minus"
-            android:layout_width="24dp"
+            android:layout_width="20dp"
             android:layout_height="match_parent"
             android:layout_alignParentLeft="true"
             android:background="@drawable/minus" />
@@ -93,7 +93,7 @@
 
         <TextView
             android:id="@+id/add"
-            android:layout_width="24dp"
+            android:layout_width="20dp"
             android:layout_height="match_parent"
             android:layout_alignParentRight="true"
             android:background="@drawable/add" />
@@ -109,7 +109,7 @@
             android:gravity="center"
             android:text="0"
             android:textColor="@color/black"
-            android:textSize="14dp">
+            android:textSize="18dp">
 
         </EditText>
 
@@ -147,9 +147,34 @@
     <RelativeLayout
         android:id="@+id/button_layout"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="match_parent"
         android:layout_below="@+id/add_layout"
-        android:layout_marginTop="85dp">
+        android:layout_marginTop="35dp">
+
+        <com.menusystem.view.FlowRadioGroup
+            android:id="@+id/radio_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/marked"
+            android:layout_above="@+id/submit"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="20dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:layout_centerInParent="true"
+            >
+        </com.menusystem.view.FlowRadioGroup>
+        <TextView
+            android:id="@+id/marked"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:textSize="13dp"
+            android:gravity="center|left"
+            android:paddingLeft="65dp"
+            android:textColor="@color/red"
+            android:text="@string/hint"
+            />
 
         <TextView
             android:id="@+id/zhongxian"
@@ -161,38 +186,35 @@
 
         <Button
             android:id="@+id/submit"
-            android:layout_width="120dp"
-            android:layout_height="match_parent"
+            android:layout_width="90dp"
+            android:layout_height="65dp"
             android:layout_marginRight="30dp"
+            android:layout_marginTop="15dp"
             android:layout_toLeftOf="@+id/zhongxian"
-            android:background="@color/white9"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="25dp"
+            android:background="@drawable/radio_selector"
             android:text="添加"
             android:textColor="@color/black"
             android:textSize="18dp" />
 
 
+
         <Button
             android:id="@+id/cancel"
-            android:layout_width="120dp"
-            android:layout_height="match_parent"
+            android:layout_width="90dp"
+            android:layout_height="65dp"
             android:layout_marginLeft="30dp"
+            android:layout_marginTop="15dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="25dp"
             android:layout_toRightOf="@+id/zhongxian"
-            android:background="@color/white9"
+            android:background="@drawable/radio_selector"
             android:text="取消"
             android:textColor="@color/black"
             android:textSize="18dp" />
 
-    </RelativeLayout>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/button_layout"
-        android:layout_margin="15dp"
-        android:textSize="15dp"
-        android:gravity="center"
-        android:textColor="@color/red"
-        android:text="@string/hint"
-        />
+    </RelativeLayout>
 
 </RelativeLayout>

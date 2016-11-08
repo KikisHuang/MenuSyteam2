@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="650dp"
+    android:layout_height="550dp"
+    android:background="@drawable/order_background"
+    >
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/pay_title"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:textSize="35dp"
+        >
+
+    </TextView>
+
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:layout_marginLeft="50dp"
+       android:layout_marginRight="50dp"
+       android:orientation="horizontal"
+       android:layout_weight="1"
+       >
+    <ImageView
+        android:id="@+id/Wechat_img"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginRight="13dp"
+        android:layout_marginTop="5dp"
+        android:layout_weight="1"
+        />
+
+       <ImageView
+           android:id="@+id/AliPay_img"
+           android:layout_width="wrap_content"
+           android:layout_height="match_parent"
+           android:layout_marginTop="5dp"
+           android:layout_marginLeft="13dp"
+           android:layout_weight="1"
+           />
+   </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_weight="0.5"
+        >
+        <TextView
+            android:id="@+id/wechat_tv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="@string/We_chat"
+            android:layout_weight="1"
+            android:textSize="21dp"
+            android:textColor="@color/black"
+            />
+
+        <TextView
+            android:id="@+id/plipay_tv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="@string/pli_pay"
+            android:layout_weight="1"
+            android:textSize="21dp"
+            android:textColor="@color/black"
+            />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.5"
+        android:text="@string/paythebill_hint"
+        android:gravity="center"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:textColor="@color/red"
+        android:textSize="18dp"
+        />
+
+</LinearLayout>

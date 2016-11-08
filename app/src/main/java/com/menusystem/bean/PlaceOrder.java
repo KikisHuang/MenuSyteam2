@@ -18,6 +18,16 @@ public class PlaceOrder {
     int FoodStatus;
     String FoodId;
     int FoodNumber;
+    String Detail;
+
+
+    public String getDetail() {
+        return Detail;
+    }
+
+    public void setDetail(String detail) {
+        Detail = detail;
+    }
 
     public int getFoodNumber() {
         return FoodNumber;

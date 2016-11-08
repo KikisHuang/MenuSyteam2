@@ -19,14 +19,21 @@ public class Verify {
     public static final String PAYTHEBILL="/PayTheBill";
     public static final String MESSAGE="/Message";
 
+    public static final String PAY_QUERY_THREAD="/QueryPayTheBill";
+
     //版本号查询;
     public static final String VERSION_QUERY="/VersionQuery";
     //Apk下载;
     public static final String APK_DOWNLOAD="http://192.168.1.88:8080/version/";
     public static final String APK = ".apk";
 
+    //二维码付款URL;
+    public static final String WECHAT_PAY = "http://192.168.1.88:8080/QrCode/Wechat_pay.png";
+    public static final String Ali_PAY = "http://192.168.1.88:8080/QrCode/Ali_pay.png";
+
     public static final String MY_LOGCAT_TAG="Cristiano == ";
     public static final int RESULET_CODE = 1;
+    public static final int PAY_THE_ALL_AC_RESULET_CODE = 2;
     public static final String TABLE_NUMBER ="Table_Number";
     /**
      * 菜品信息状态码: 1.已下单,0.未下单（无效菜品）,9.已上菜.

@@ -16,6 +16,15 @@ public class Order implements Serializable {
     int Number;
     int State;
 
+    public String getDetailName() {
+        return DetailName;
+    }
+
+    public void setDetailName(String detailName) {
+        DetailName = detailName;
+    }
+
+    String DetailName;
 
     public int getAppend() {
         return Append;

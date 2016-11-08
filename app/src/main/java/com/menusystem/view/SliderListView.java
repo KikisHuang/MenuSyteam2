@@ -1,4 +1,4 @@
-package com.menusystem.sliderview;
+package com.menusystem.view;
 
 import android.content.Context;
 import android.util.AttributeSet;

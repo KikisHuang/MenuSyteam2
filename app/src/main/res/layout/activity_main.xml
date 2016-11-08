@@ -223,14 +223,14 @@
 
         </RelativeLayout>
 
-        <com.menusystem.sliderview.SliderListView
+        <com.menusystem.view.SliderListView
             android:id="@+id/right_listView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_above="@+id/fenge1"
             android:layout_below="@id/fenge">
 
-        </com.menusystem.sliderview.SliderListView>
+        </com.menusystem.view.SliderListView>
 
         <TextView
             android:id="@+id/fenge1"

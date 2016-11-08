@@ -30,22 +30,23 @@ import com.menusystem.asynctask.OrderQueryAsynctask;
 import com.menusystem.asynctask.PlaceOrderAsyncTask;
 import com.menusystem.bean.Append;
 import com.menusystem.bean.Data;
-import com.menusystem.bean.Four;
 import com.menusystem.bean.MenuType;
 import com.menusystem.bean.Order;
 import com.menusystem.bean.OrderStatus;
 import com.menusystem.bean.PlaceOrder;
-import com.menusystem.sliderview.SliderListView;
+import com.menusystem.bean.Three;
 import com.menusystem.util.AlertDialogUtils;
 import com.menusystem.util.CommonUtil;
 import com.menusystem.util.LruCacheUtils;
 import com.menusystem.util.Partition;
 import com.menusystem.util.SharedPreference;
+import com.menusystem.util.fileUtils;
+import com.menusystem.view.SliderListView;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
-import static com.menusystem.adapter.TravelAdapter.BitmapRecycle;
 import static com.menusystem.bean.Verify.ADD_WATER;
 import static com.menusystem.bean.Verify.MY_LOGCAT_TAG;
 import static com.menusystem.bean.Verify.NO_PLACE_AN_ORDER;
@@ -55,21 +56,21 @@ import static com.menusystem.bean.Verify.ORDERSUCCEED;
 import static com.menusystem.bean.Verify.PAY_THE_BILL;
 import static com.menusystem.bean.Verify.PLACE_AN_ORDER;
 import static com.menusystem.bean.Verify.REMINDER;
+import static com.menusystem.bean.Verify.RESULET_CODE;
 import static com.menusystem.bean.Verify.TABLE_NUMBER;
 import static com.menusystem.bean.Verify.THREADCONTROL;
-import static com.menusystem.database.DatabaseUtils.CloseDb;
 import static com.menusystem.util.AddMessageUtils.NewMeassge;
 import static com.menusystem.util.AlertDialogUtils.getCommonDialog;
 import static com.menusystem.util.AlertDialogUtils.getOnlyDialog;
 import static com.menusystem.util.AlertDialogUtils.getPayTheBillDiaglog;
 import static com.menusystem.util.CommonUtil.addActivity;
-import static com.menusystem.util.OrderoverlayUtil.OverlayOrderjudge;
 import static com.menusystem.util.SharedPreference.setSharedPreference;
 import static com.menusystem.util.TableNumChange.getTableAlertDialog;
 
 
 public class MainActivity extends Activity {
     private static final String TAG = "MainActivity";
+    public static MainActivity instance = null;
 
     private static TextView table_number;
     private TextView zhuohao;
@@ -82,7 +83,7 @@ public class MainActivity extends Activity {
     private Button xiadan, mai, cui, add_water;
     public List<MenuType> list;
     public List<Data> dlist;
-    public List<Four> alist;
+    public List<Three> alist;
     static List<Order> olist;
     private static Handler mHandler;
     private LinearLayout MainRl;
@@ -97,6 +98,7 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.wei_test);
+        instance = this;
         addActivity(this);
         Log.i(TAG, MY_LOGCAT_TAG + "onCreate");
         init();
@@ -147,12 +149,17 @@ public class MainActivity extends Activity {
 
                 All_Prices += c;
             }
+
             all_prices.setText(String.valueOf(All_Prices));
+
         } else {
             return;
         }
     }
 
+    /**
+     * 获取CSID方法;
+     */
     public static void SetCsid(String id,Activity ac){
 
         CSID = id;
@@ -186,6 +193,9 @@ public class MainActivity extends Activity {
 
     }
 
+    /**
+     * 添加已下单菜式信息;
+     */
     public static void AddOrder(Order od,Activity context){
 
         olist.add(od);
@@ -335,7 +345,7 @@ public class MainActivity extends Activity {
     }
 
     /**
-     * 修改菜式状态码方法2;
+     * 修改菜式状态码方法2(实时查询菜品状态方法,现暂停使用);
      */
     public static void ChangeOrderStatusTwo(List<OrderStatus> slist) {
 
@@ -425,7 +435,7 @@ public class MainActivity extends Activity {
 
                 } else {
 
-                    getOnlyDialog(MainActivity.this,"未接受到菜单栏的菜式,请点菜后再下单。");
+                    getOnlyDialog(MainActivity.this,"菜单栏没有菜式信息提交,请点菜后再下单!");
                     return;
                 }
 
@@ -491,7 +501,7 @@ public class MainActivity extends Activity {
                 Po.setFoodStatus(PLACE_AN_ORDER);
                 Po.setFoodId(olist.get(i).getFoodId());
                 Po.setFoodNumber(olist.get(i).getNumber());
-
+                Po.setDetail(olist.get(i).getDetailName());
                 plist.add(Po);
             }
         }
@@ -502,7 +512,8 @@ public class MainActivity extends Activity {
 
         } else {
 
-            Toast.makeText(this, "没有未下单状态的菜品...", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(this, "没有未下单状态的菜品...", Toast.LENGTH_SHORT).show();
+            AlertDialogUtils.getOnlyDialog(this,"没有未下单状态的菜品...");
 
             Log.i(TAG, "没有未下单状态的菜品...");
         }
@@ -552,6 +563,9 @@ public class MainActivity extends Activity {
 
     }
 
+    /**
+     * 桌号设置;
+     */
     private void TableNumber() {
 
         zhuohao.setOnClickListener(new View.OnClickListener() {
@@ -597,20 +611,18 @@ public class MainActivity extends Activity {
             @Override
             public void onViewFlipped(View view, int position) {
 
-                for (int i = 0; i < leftmenu.getChildCount(); i++) {
+                for (int i = 0; i < leftmenu.getCount(); i++) {
 
                     String b = list.get(i).getFoodTypeID();
                     String a1 = alist.get(position).getFoodTypeID1();
                     String a2 = alist.get(position).getFoodTypeID2();
                     String a3 = alist.get(position).getFoodTypeID3();
-                    String a4 = alist.get(position).getFoodTypeID4();
 
-                    if (a1.equals(b)||a2.equals(b)||a3.equals(b)||a4.equals(b)) {
+                    if (a1.equals(b)||a2.equals(b)||a3.equals(b)) {
 
                         leftmenu.getChildAt(i).setBackgroundColor(MainActivity.this.getResources().getColor(R.color.black5));
 
                         clear(i);
-                        Log.i(TAG, " Last != list.get(i).getFoodTypeID() 进行setSelector");
                         break;
 
                     } else {
@@ -708,6 +720,7 @@ public class MainActivity extends Activity {
     private void Dataswitch() {
 
         try {
+            Log.i(TAG,"获得菜品数据量 == "+dlist.size());
             alist = Partition.GetDataSwitch(dlist);
         } catch (Exception e) {
             return;
@@ -747,12 +760,15 @@ public class MainActivity extends Activity {
 
         flipView = new FlipViewController(MainActivity.this, FlipViewController.HORIZONTAL);
 
-        tadapter = new TravelAdapter(MainActivity.this, alist, dlist);
+        tadapter = new TravelAdapter(MainActivity.this, alist);
 
         flipView.setAdapter(tadapter);
 
     }
 
+    /**
+     * 发送消息;
+     */
     public static void Send(int addWater, Context context) {
 
         NewMeassge(SystemId, context, addWater, CSID, TableNumber);
@@ -807,14 +823,15 @@ public class MainActivity extends Activity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (ORDERFLAG) {
+        if (ORDERFLAG&&resultCode==RESULET_CODE) {
 
             Order od;
 
-            od = (Order) data.getSerializableExtra("order_list");
+            od = (Order) data.getSerializableExtra("addorder");
+            //相同菜品数量叠加方法;
+            //olist = OverlayOrderjudge(olist,od);
 
-            olist = OverlayOrderjudge(olist,od);
-
+            olist.add(od);
             Log.i(TAG, "My onActivityResult " + od.getFoodName());
 
             oadapter.notifyDataSetChanged();
@@ -822,9 +839,6 @@ public class MainActivity extends Activity {
 
             ORDERFLAG = false;
 
-        } else {
-
-            return;
         }
 
     }
@@ -898,7 +912,6 @@ public class MainActivity extends Activity {
         Log.i(TAG, "onResume方法启动清理应用缓存，防止OOM");
     }
 
-
     @Override
     protected void onRestart() {
         super.onRestart();
@@ -907,13 +920,69 @@ public class MainActivity extends Activity {
 
     @Override
     protected void onDestroy() {
-        BitmapRecycle();
-        CloseDb();
+//        BitmapRecycle();
+//        CloseDb();
         RemoveCache();
+        DeleteFile();
         Log.i(TAG, "onDestroy方法启动清理应用缓存，防止OOM");
         super.onDestroy();
         Log.i(TAG, MY_LOGCAT_TAG + "onDestroy");
 
+    }
+
+    /**
+     * 删除图片缓存文件夹;
+     */
+    private void DeleteFile() {
+
+
+
+        Calendar cal = Calendar.getInstance();// 当前日期
+        int hour = cal.get(Calendar.HOUR_OF_DAY);// 获取小时
+        int Max = 23 * 60 + 59; //一天最大时间值;
+        int minute = cal.get(Calendar.MINUTE);// 获取分钟
+        int minuteOfDay = hour * 60 + minute;// 从0:00分开是到目前为止的分钟数
+//		final int start = 17 * 60 + 20;// 起始时间 17:20的分钟数
+        final int start = 21 * 60;  //起始时间 21:00的分钟数
+        final int end = 7 * 60 + 20;// 结束时间 7:20的分钟数
+
+        if ((minuteOfDay >= start && minuteOfDay<=Max)||(minuteOfDay<= start && minuteOfDay <=end)) {
+
+            Log.i(TAG,"在预设的更新图片时间范围内....");
+
+            if(PAY_THE_BILL){
+                fileUtils.deleteFile();
+            }else{
+                boolean flag = true;
+                if(olist.size()>0){
+
+                    for(int i=0;i<olist.size();i++){
+                        int state = olist.get(i).getState();
+                        if(state==PLACE_AN_ORDER){
+
+                            flag = false;
+                            Log.i(TAG,"清除本地文件flag == "+ flag);
+                        }
+                    }
+
+                    if(!flag){
+
+                        return;
+                    }else{
+                        Log.i(TAG,"清除本地文件flag == "+ flag);
+                        fileUtils.deleteFile();
+
+                    }
+                }else{
+                    Log.i(TAG,"清除本地文件flag == "+ flag);
+                    fileUtils.deleteFile();
+                }
+            }
+
+        } else {
+            Log.i(TAG,"在预设的更新图片时间范围外....");
+                return;
+        }
     }
 
     /**
@@ -928,6 +997,9 @@ public class MainActivity extends Activity {
         System.gc();
         int Chace1 = (int) (Runtime.getRuntime().totalMemory() / 1024 / 1024);
         Log.i(TAG, "当前缓存为:" + Chace1 + "-----------");
+
     }
+
+
 
 }

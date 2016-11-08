@@ -4,22 +4,17 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Log;
-import android.widget.Toast;
 
-import com.menusystem.activity.EndActivity;
+import com.menusystem.activity.PayTheBillActivity;
 import com.menusystem.util.AlertDialogUtils;
-import com.menusystem.util.CommonUtil;
 import com.menusystem.util.HttpURlConnection;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 
-import static com.menusystem.activity.MainActivity.DataJudge;
 import static com.menusystem.bean.Verify.MHTTP;
-import static com.menusystem.bean.Verify.ORDERSUCCEED;
 import static com.menusystem.bean.Verify.PAYTHEBILL;
-import static com.menusystem.bean.Verify.PAY_THE_BILL;
 import static com.menusystem.bean.Verify.VERIFY_KEY;
 
 /**
@@ -29,6 +24,8 @@ public class PayTheBillAsynctask extends AsyncTask {
     private static final String TAG = "PayTheBillAsynctask";
     String result = "";
     Activity Ac;
+    String CSID = "";
+    String Number = "";
 
     public PayTheBillAsynctask(Activity Ac) {
 
@@ -40,9 +37,9 @@ public class PayTheBillAsynctask extends AsyncTask {
 
         String menukey = VERIFY_KEY;
 
-        String CSID = String.valueOf(params[0]);
-        String SysId = String.valueOf(params[1]);
-        String Number = String.valueOf(params[2]);
+         CSID = String.valueOf(params[0]);
+         String SysId = String.valueOf(params[1]);
+         Number = String.valueOf(params[2]);
 
         Log.i(TAG, "买单的CSID ===" + CSID);
         StringBuilder sb = new StringBuilder(MHTTP + PAYTHEBILL);
@@ -76,18 +73,25 @@ public class PayTheBillAsynctask extends AsyncTask {
             if (o.equals("true")) {
 //                AlertDialogUtils.getOnlyDialog(Ac,"亲爱的顾客,请稍等...已经为您联系服务员前来结账...");
 
-                Toast.makeText(Ac, "亲爱的顾客,请稍等...已经为您联系服务员前来结账...", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(Ac, "亲爱的顾客,请稍等...已经为您联系服务员前来结账...", Toast.LENGTH_SHORT).show();
                 Log.i(TAG, "成功修改数据库  result ===" + o);
 
-                ORDERSUCCEED = false;
-                PAY_THE_BILL = true;
-                DataJudge(Ac);
+//                ORDERSUCCEED = false;
+//                PAY_THE_BILL = true;
+//                DataJudge(Ac);
 
-                Intent intent = new Intent(Ac, EndActivity.class);
+                Intent intent  = new Intent(Ac,PayTheBillActivity.class);
+
+                intent.putExtra("Pay_csid",CSID);
 
                 Ac.startActivity(intent);
 
-                CommonUtil.Exit(Ac);
+//                Intent intent = new Intent(Ac, EndActivity.class);
+//
+//                Ac.startActivity(intent);
+
+//                CommonUtil.Exit(Ac);
+
             }
             if (o.equals("false")) {
 
@@ -100,6 +104,7 @@ public class PayTheBillAsynctask extends AsyncTask {
 
             AlertDialogUtils.getOnlyDialog(Ac,"与服务器连接异常...请您自行联系服务员结账!...");
             Log.i(TAG, "Error ===" + e);
+            return;
         }
 
     }

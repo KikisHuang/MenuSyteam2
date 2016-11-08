@@ -18,7 +18,6 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
-
     <style name="ContentOverlay" parent="@android:style/Theme.Light">
         <item name="android:windowBackground">@drawable/welcome_img</item>
         <item name="android:windowNoTitle">true</item>

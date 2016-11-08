@@ -12,7 +12,6 @@ import android.widget.Toast;
 import com.menusystem.R;
 import com.menusystem.bean.Data;
 import com.menusystem.bean.MenuType;
-import com.menusystem.database.DatabaseUtils;
 import com.menusystem.util.CommonUtil;
 import com.menusystem.util.DownloadService;
 import com.menusystem.util.HttpURlConnection;
@@ -35,7 +34,6 @@ import static com.menusystem.bean.Verify.MHTTP;
 import static com.menusystem.bean.Verify.MY_LOGCAT_TAG;
 import static com.menusystem.bean.Verify.VERIFY_KEY;
 import static com.menusystem.bean.Verify.VERSION_QUERY;
-import static com.menusystem.database.DatabaseUtils.CreateDatabase;
 import static com.menusystem.util.AlertDialogUtils.getVersionDialog;
 import static com.menusystem.util.CommonUtil.addActivity;
 import static com.menusystem.util.CommonUtil.getVersion;
@@ -76,9 +74,9 @@ public class Welcome_Activity extends Activity {
         /**
          * Sqlite数据库创建,存储临时菜单信息
          */
-        DatabaseUtils Du = new DatabaseUtils(Welcome_Activity.this);
-
-        CreateDatabase("Cristiano");
+//        DatabaseUtils Du = new DatabaseUtils(Welcome_Activity.this);
+//
+//        CreateDatabase("Cristiano");
     }
 
     private void networking() {
@@ -223,15 +221,15 @@ public class Welcome_Activity extends Activity {
         @Override
         protected void onPostExecute(Object o) {
 
-            if(!Version.equals(getVersion(ac).trim())&&Version.length()>0) {
+            if(!Version.equals(getVersion(ac).trim())&&Version.length()>0&&!Version.equals("NO_File")) {
 
                 getVersionDialog(ac, Version);
 
                 Log.i(TAG,"有新版本....Version = "+Version);
+                Log.i(TAG,"当前的版本为....Version = "+getVersion(ac).trim());
             }else{
-
                 Operation(ac);
-                Log.i(TAG,"没有新版本....Version = "+Version);
+                Log.i(TAG,"当前的版本为....Version = "+getVersion(ac).trim());
             }
         }
         public static void Operation(Activity ac){

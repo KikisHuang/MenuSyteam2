@@ -75,18 +75,19 @@ public class HttpURlConnection {
         } else {
 
             Log.i("网络状态码打印", " = " + conn.getResponseCode());
-
+            CloseConnection(conn);
             return null;
         }
 
         if (t != null) {
 
+            CloseConnection(conn);
             return t;
 
         } else {
 
+            CloseConnection(conn);
             return null;
-
         }
 
 
@@ -131,6 +132,7 @@ public class HttpURlConnection {
                 obj.put("FoodStatus", plist.get(i).getFoodStatus());
                 obj.put("FoodId", plist.get(i).getFoodId());
                 obj.put("FoodNumber", plist.get(i).getFoodNumber());
+                obj.put("DetailName",plist.get(i).getDetail());
 
                 Log.i(TAG, "AsyncTask信息打印 ++++" + obj);
 
@@ -158,12 +160,12 @@ public class HttpURlConnection {
                 result = reader.readLine();
 
                 Log.i(TAG, "成功接收数据!!!" + result);
-
+                httpclient.getConnectionManager().shutdown();
                 return result;
 
             } else {
 
-
+                httpclient.getConnectionManager().shutdown();
                 return "";
             }
 
@@ -175,10 +177,21 @@ public class HttpURlConnection {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
+        }finally {
+
+            if(httpclient!=null){
+
+                httpclient.getConnectionManager().shutdown();
+            }
         }
 
         return "";
     }
+
+    public static void CloseConnection(HttpURLConnection conn){
+
+        conn.disconnect();
+    };
 
 }
 

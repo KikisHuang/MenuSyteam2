@@ -111,7 +111,7 @@ public class fileUtils {
     /**
      * 删除SD卡或者手机的缓存图片和目录
      */
-    public void deleteFile() {
+    public static void deleteFile() {
         File dirFile = new File(getStorageDirectory());
         if (!dirFile.exists()) {
             return;
@@ -122,8 +122,6 @@ public class fileUtils {
                 new File(dirFile, children[i]).delete();
             }
         }
-
         dirFile.delete();
-
     }
 }

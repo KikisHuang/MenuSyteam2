@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import com.menusystem.R;
 import com.menusystem.bean.Order;
-import com.menusystem.sliderview.SliderChangeView;
+import com.menusystem.view.SliderChangeView;
 
 import java.util.List;
 
@@ -79,7 +79,7 @@ public class OrderAdapter extends BaseAdapter {
 
         sliderview.shrink();
 
-        DeleteButton(holder, position);
+        DeleteButton(holder, position, sliderview);
 
 
         int StateJudge = olist.get(position).getState();
@@ -110,13 +110,13 @@ public class OrderAdapter extends BaseAdapter {
         return sliderview;
     }
 
-    private void DeleteButton(ViewHolder holder, final int position) {
+    private void DeleteButton(ViewHolder holder, final int position, final SliderChangeView sliderview) {
 
         holder.deleteHolder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                getDeleteDialog(context,olist,position);
+                getDeleteDialog(context,olist,position,sliderview,OrderAdapter.this);
 
             }
         });
@@ -146,9 +146,17 @@ public class OrderAdapter extends BaseAdapter {
      */
     private void NoPlaceOrderState(ViewHolder holder, int position) {
 
+        String remark = olist.get(position).getDetailName();
+
+        if(remark.equals("默认")){
+            remark = "";
+        }else{
+            remark = "("+olist.get(position).getDetailName()+")";
+        }
+
         int Color = context.getResources().getColor(R.color.black);
 
-        holder.order_name.setText(olist.get(position).getFoodName());
+        holder.order_name.setText(olist.get(position).getFoodName()+remark);
         holder.order_name.setTextColor(Color);
 
         holder.order_price.setText(olist.get(position).getSellPrice());
@@ -164,9 +172,19 @@ public class OrderAdapter extends BaseAdapter {
      */
     private void PlaceOrderState(ViewHolder holder, int position) {
 
+
+        String remark = olist.get(position).getDetailName();
+
+        if(remark.equals("默认")){
+            remark = "";
+        }else{
+            remark = "("+olist.get(position).getDetailName()+")";
+        }
+
+
         int Color = context.getResources().getColor(R.color.blue);
 
-        holder.order_name.setText(olist.get(position).getFoodName());
+        holder.order_name.setText(olist.get(position).getFoodName()+remark);
         holder.order_name.setTextColor(Color);
 
         holder.order_price.setText(olist.get(position).getSellPrice());

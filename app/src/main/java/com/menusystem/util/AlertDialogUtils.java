@@ -11,6 +11,7 @@ import com.menusystem.adapter.OrderAdapter;
 import com.menusystem.asynctask.PayTheBillAsynctask;
 import com.menusystem.asynctask.UpdateVersionAsyncTask;
 import com.menusystem.bean.Order;
+import com.menusystem.view.SliderChangeView;
 
 import java.util.List;
 
@@ -105,7 +106,7 @@ public class AlertDialogUtils {
   }
 
 
-    public static void getDeleteDialog(final Context context, final List<Order> olist, final int position){
+    public static void getDeleteDialog(final Context context, final List<Order> olist, final int position, final SliderChangeView sliderview, final OrderAdapter orderAdapter){
 
 
         AlertDialog.Builder builder = new AlertDialog.Builder(context, AlertDialog.THEME_HOLO_LIGHT);
@@ -121,9 +122,7 @@ public class AlertDialogUtils {
                     Log.i(TAG, "Delete !!!!!!!!菜式名称 ====="+olist.get(position).getFoodName());
 
                     olist.remove(position);
-
-                    OrderAdapter ad = new OrderAdapter(context,olist);
-                    ad.notifyDataSetChanged();
+                    orderAdapter.notifyDataSetChanged();
                     GainAllPrices();
                     return;
 
